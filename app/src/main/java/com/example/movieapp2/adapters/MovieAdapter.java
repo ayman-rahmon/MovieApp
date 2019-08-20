@@ -33,7 +33,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public MovieAdapter(Context context  , OnMovieClickedListener onMovieClickedListener) {
         this.mContext = context ;
-        this.listener = listener ;
+        this.listener = onMovieClickedListener ;
     }
 
 
@@ -86,14 +86,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    @BindView(R.id.movie_title_id)
     TextView movieTitle ;
-    @BindView(R.id.movie_img_id)
     ImageView moviePoster ;
-
 
     public ViewHolder(@NonNull View itemView) {
         super(itemView);
+        movieTitle =  itemView.findViewById(R.id.movie_title_id);
+        moviePoster = itemView.findViewById(R.id.movie_img_id);
         itemView.setOnClickListener(this);
     }
 
