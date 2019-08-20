@@ -53,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
 
         listView.setLayoutManager(new GridLayoutManager(this,3));
         listView.setAdapter(adapter);
+
+
+
+        new DownloadMovies().execute();
+
     }
 
     @Override
