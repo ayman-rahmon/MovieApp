@@ -49,15 +49,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
         // setting views ...
-
         // setting movie title ...
         viewHolder.movieTitle.setText(movies.get(i).getOriginalTitle());
         // loading movie poster ...
         Picasso.get().load(Constants.movieImage + movies.get(i).getPoster_path()).into(viewHolder.moviePoster);
-
-
     }
 
 
