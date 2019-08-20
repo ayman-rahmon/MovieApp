@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MovieApp2</string>
+
+    <string name="avarage_rate">Avarage Rate :</string>
+    <string name="popular_movies">popular movies</string>
+    <string name="most_rated">most rated</string>
+    <string name="prompt">trailers</string>
+    <string name="api_key">02125890263c5f322accfbe297beef06</string>
+    <string name="my_favorites">my favorites</string>
+
+
+</resources>
