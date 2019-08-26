@@ -1,4 +1,4 @@
-package com.example.movieapp2.model;
+package com.example.movieapp2.repository.storage.model;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.persistence.room.ColumnInfo;

@@ -3,7 +3,7 @@ package com.example.movieapp2.utils;
 import android.util.Log;
 
 
-import com.example.movieapp2.model.Movie;
+import com.example.movieapp2.repository.storage.model.Movie;
 
 import org.json.JSONException;
 import org.json.JSONObject;

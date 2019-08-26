@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.movieapp2.Constants;
 import com.example.movieapp2.R;
-import com.example.movieapp2.model.Movie;
+import com.example.movieapp2.repository.storage.model.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

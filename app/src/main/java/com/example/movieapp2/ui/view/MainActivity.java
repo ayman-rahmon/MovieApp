@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 
 import com.example.movieapp2.Constants;
 import com.example.movieapp2.R;
-import com.example.movieapp2.model.Movie;
+import com.example.movieapp2.repository.storage.model.Movie;
 import com.example.movieapp2.ui.adapters.MovieAdapter ;
 import com.example.movieapp2.utils.JSONUtils;
 import com.example.movieapp2.utils.NetworkUtils;
