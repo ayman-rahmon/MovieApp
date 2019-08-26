@@ -1,4 +1,4 @@
-package com.example.movieapp2.adapters;
+package com.example.movieapp2.ui.adapters;
 
 
 import android.content.Context;
@@ -17,9 +17,6 @@ import com.example.movieapp2.model.Movie;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import butterknife.BindView;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
