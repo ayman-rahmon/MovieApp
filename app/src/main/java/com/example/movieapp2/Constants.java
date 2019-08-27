@@ -13,6 +13,10 @@ public final class Constants {
     public static final String BASE_TOP_RATED_MOVIE_URL = "http://api.themoviedb.org/3/movie/top_rated" ;
     //  https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
     public static final String BASE_MOVIE_REVIEWS  = "https://api.themoviedb.org/3/movie" ;
+    private static final String IMAGE_URL_PREFIX = "https://image.tmdb.org/t/p/";
+    public static final String SMALL_IMAGE_URL_PREFIX = IMAGE_URL_PREFIX + "w300";
+    public static final String BIG_IMAGE_URL_PREFIX = IMAGE_URL_PREFIX + "w500";
+
     // api ke
     public static final String API_KEY_LABEL = "api_key";
     public static final String API_KEY = "02125890263c5f322accfbe297beef06";

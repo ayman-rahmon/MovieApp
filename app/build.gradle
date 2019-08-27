@@ -43,9 +43,12 @@ dependencies {
     // okhttp . :)
     implementation 'com.squareup.okhttp:okhttp:2.5.0'
 
-    // list stuff...
+    // material ...
+    implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
+    // list .
     implementation 'com.android.support:recyclerview-v7:28.0.0'
+
 
     // butterknife...
 
@@ -82,5 +85,11 @@ dependencies {
 
     // rx
     implementation 'io.reactivex:rxjava:1.2.7'
+
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
 
 }

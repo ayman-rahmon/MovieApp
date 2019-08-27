@@ -1,16 +1,13 @@
 package com.example.movieapp2.ui.view;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.movieapp2.Constants;
 import com.example.movieapp2.R;
 import com.example.movieapp2.repository.storage.model.Movie;
 import com.example.movieapp2.ui.adapters.MovieAdapter ;
@@ -28,15 +25,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMovieClickedListener {
+public class MainActivity extends AppCompatActivity  {
 
 
 
     private static final String TAG = MainActivity.class.getSimpleName() ;
 
 
-    static ProgressBar progressBar ;
-    static RecyclerView listView ;
 
 
     private static MovieAdapter adapter ;
@@ -46,10 +41,30 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        progressBar = findViewById(R.id.progress_bar);
-        listView = findViewById(R.id.recycler_view);
 
-        adapter = new MovieAdapter(this, this );
+
+        if(findViewById(R.id.fragmentsContainer)!= null) {
+            if(savedInstanceState != null ){
+                return  ;
+            }
+            MovieListFragment  listFragment = new MovieListFragment() ;
+            listFragment.setArguments(getIntent().getExtras());
+            getSupportFragmentManager().beginTransaction().add(R.id.fragmentsContainer,listFragment).commit();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+        adapter = new MovieAdapter(this );
 
         listView.setLayoutManager(new GridLayoutManager(this,3));
         listView.setAdapter(adapter);
@@ -57,9 +72,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
 
 
         new DownloadMovies().execute();
+*/
 
     }
 
+/*
     @Override
     public void onMovieClicked(Movie clickedItem) {
     // movie clicked ...
@@ -75,8 +92,10 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
         startDetails.putExtra(Constants.INTENT_RELEASE_DATE,clickedItem.getReleaseDate());
         startActivity(startDetails);
     }
+*/
 
 
+/*
     static class DownloadMovies extends AsyncTask<Void,Void,ArrayList<Movie>> {
 
         @Override
@@ -150,5 +169,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnMo
         }
 
     }
+*/
 
 }

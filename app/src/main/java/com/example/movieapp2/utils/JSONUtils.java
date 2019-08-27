@@ -30,7 +30,7 @@ public static final  String TAG = "JSONError" ;
             String releaseDate =  jmovie.getString("release_date");
             Double voteAvarage  = jmovie.getDouble("vote_average") ;
 
-             movie = new Movie(id,poster_path,originalTitle,backgrounpath,overview,releaseDate,voteAvarage) ;
+//             movie = new Movie(id,poster_path,originalTitle,backgrounpath,overview,releaseDate,voteAvarage) ;
 
 //            Log.d("Movie:"," "+movie.toString());
 
