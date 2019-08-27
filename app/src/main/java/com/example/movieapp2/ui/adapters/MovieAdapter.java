@@ -1,100 +1,108 @@
 package com.example.movieapp2.ui.adapters;
 
 
+import android.arch.paging.PagedListAdapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.recyclerview.extensions.AsyncDifferConfig;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.movieapp2.Constants;
 import com.example.movieapp2.R;
 import com.example.movieapp2.repository.storage.model.Movie;
+import com.example.movieapp2.repository.storage.model.NetworkState;
+import com.example.movieapp2.ui.view.viewholder.MovieViewHolder;
+import com.example.movieapp2.ui.view.viewholder.NetworkStateItemViewHolder;
+import com.example.movieapp2.ui.listeners.OnMovieItemClicked ;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
+public class MovieAdapter extends PagedListAdapter<Movie, RecyclerView.ViewHolder> {
 
     private final String TAG = MovieAdapter.class.getSimpleName() ;
 
 
-    private ArrayList<Movie> movies ;
-    private Context mContext ;
-    private OnMovieClickedListener listener ;
 
+    private NetworkState networkState ;
+    private OnMovieItemClicked listener ;
 
-    public MovieAdapter(Context context  , OnMovieClickedListener onMovieClickedListener) {
-        this.mContext = context ;
-        this.listener = onMovieClickedListener ;
+    public MovieAdapter(OnMovieItemClicked listener) {
+        super(Movie.DIFF_CALLBACK);
+        this.listener = listener ;
     }
 
 
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        LayoutInflater mInglater = LayoutInflater.from(mContext);
-        View view = mInglater.inflate(R.layout.movie_item_layout , viewGroup,false);
-        return new ViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+    LayoutInflater  inflater = LayoutInflater.from(viewGroup.getContext());
+    if( viewType  == R.layout.movie_item_layout){
+        View view = inflater.inflate(R.layout.movie_item_layout,viewGroup,false );
+        MovieViewHolder holder = new MovieViewHolder(view,listener);
+        return holder;
+    }else if (viewType == R.layout.network_state_item) {
+        View view = inflater.inflate(R.layout.network_state_item,viewGroup,false);
+        return new NetworkStateItemViewHolder(view);
+    }else{
+        throw new IllegalArgumentException("unknown view type..");
+    }
     }
 
-
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        // setting views ...
-        // setting movie title ...
-        viewHolder.movieTitle.setText(movies.get(i).getOriginalTitle());
-        // loading movie poster ...
-        Picasso.get().load(Constants.movieImage + movies.get(i).getPoster_path()).into(viewHolder.moviePoster);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        switch(getItemViewType(position)) {
+            case R.layout.movie_item_layout :
+                ((MovieViewHolder)viewHolder).bindTo(getItem(position));
+               break ;
+            case R.layout.network_state_item:
+                ((NetworkStateItemViewHolder) viewHolder).bindView(networkState);
+                break;
+        }
     }
 
-
-    @Override
-    public int getItemCount() {
-        if(movies == null) {
-            return 0 ;
+    private boolean hasExtraRow() {
+        if(networkState != null &&  networkState != NetworkState.LOADED){
+            return  true ;
         } else {
-            return movies.size();
+            return false ;
         }
     }
 
 
-    public void setData(ArrayList<Movie> movieList) {
-        this.movies = movieList ;
-        notifyDataSetChanged();
+    @Override
+    public int getItemViewType(int position) {
+        if(hasExtraRow() && position == getItemCount() - 1 ) {
+            return R.layout.network_state_item ;
+        } else{
+            return R.layout.movie_item_layout ;
+        }
     }
 
 
 
-    public interface OnMovieClickedListener {
-        void onMovieClicked(Movie clickedItem) ;
-    }
-
-
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-    TextView movieTitle ;
-    ImageView moviePoster ;
-
-    public ViewHolder(@NonNull View itemView) {
-        super(itemView);
-        movieTitle =  itemView.findViewById(R.id.movie_title_id);
-        moviePoster = itemView.findViewById(R.id.movie_img_id);
-        itemView.setOnClickListener(this);
-    }
-
-
-        @Override
-        public void onClick(View v) {
-            Movie movie = movies.get(getAdapterPosition());
-            Log.d(TAG , "movie clicked :: (pos) " + getAdapterPosition() );
-            listener.onMovieClicked(movie);
+    public void setNetworkState(NetworkState newnetworkState) {
+        NetworkState previousState = this.networkState ;
+        boolean previousExtraRow = hasExtraRow() ;
+        this.networkState = newnetworkState ;
+        boolean newExtraRow = hasExtraRow() ;
+        if (previousExtraRow != newExtraRow) {
+            if(previousExtraRow) {
+                notifyItemRemoved(getItemCount());
+            } else {
+                notifyItemInserted(getItemCount());
+            }
+        } else if (newExtraRow && previousState != newnetworkState) {
+            notifyItemChanged(getItemCount() - 1);
         }
     }
 
@@ -103,3 +111,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
