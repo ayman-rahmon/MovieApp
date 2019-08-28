@@ -31,17 +31,10 @@ public class MainActivity extends AppCompatActivity  {
 
     private static final String TAG = MainActivity.class.getSimpleName() ;
 
-
-
-
-    private static MovieAdapter adapter ;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         if(findViewById(R.id.fragmentsContainer)!= null) {
             if(savedInstanceState != null ){
@@ -51,15 +44,6 @@ public class MainActivity extends AppCompatActivity  {
             listFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction().add(R.id.fragmentsContainer,listFragment).commit();
         }
-
-
-
-
-
-
-
-
-
 
 
 

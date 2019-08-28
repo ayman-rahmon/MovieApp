@@ -10,7 +10,7 @@ public final class Constants {
     // Network Stuff ...
     public static final String API_BASE_URL="http://api.themoviedb.org/";
     public static final String MOVIES_ARRAY_DATA_TAG = "results";
-    public static final String BASE_POPULAR_MOVIE_URL = "http://api.themoviedb.org/3/movie/popular" ;
+    public static final String BASE_POPULAR_MOVIE_URL = "http://api.themoviedb.org/3/movie/" ;
     public static final String BASE_TOP_RATED_MOVIE_URL = "http://api.themoviedb.org/3/movie/top_rated" ;
     //  https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
     public static final String BASE_MOVIE_REVIEWS  = "https://api.themoviedb.org/3/movie" ;

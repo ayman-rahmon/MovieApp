@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.example.movieapp2.ui.viewmodel.MovieListViewModel;
 
 public class MovieListFragment extends Fragment implements OnMovieItemClicked {
 
+    private final String TAG = MovieListFragment.class.getSimpleName() ;
 
     protected MovieListViewModel viewmodel ;
     private MovieDetailsViewModel movieDetailsViewModel  ;
@@ -34,11 +36,11 @@ public class MovieListFragment extends Fragment implements OnMovieItemClicked {
         View view = inflater.inflate(R.layout.movie_list_fragment , container , false );
         recyclerView = view.findViewById(R.id.moviesRecyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
+        Log.d(TAG , "creating viewmodel ..." );
         viewmodel = ViewModelProviders.of(getActivity()).get(MovieListViewModel.class);
         observersRegisters() ;
         return view;
     }
-
 
     private void observersRegisters() {
         final MovieAdapter adapter = new MovieAdapter(this);

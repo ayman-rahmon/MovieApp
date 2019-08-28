@@ -27,6 +27,7 @@ public class MovieRepository {
         NetMovieDataSourceFactory dataSourceFactory = new NetMovieDataSourceFactory() ;
         network = new MoviesNetwork(dataSourceFactory, boundryCallback);
         database = AppDatabase.getInstance(context.getApplicationContext());
+//        Log.d(TAG , String.valueOf(network.getPagedMovies()) );
         liveDataMerger = new MediatorLiveData<>();
         liveDataMerger.addSource(network.getPagedMovies(), value -> {
             liveDataMerger.setValue(value);

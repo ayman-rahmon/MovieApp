@@ -81,7 +81,7 @@ public class NetMoviePageKeyedDataSource extends PageKeyedDataSource<String, Mov
         networkState.postValue(NetworkState.LOADING);
         final AtomicInteger page = new AtomicInteger(0) ;
         try{
-
+           page.set(Integer.parseInt(params.key));
         }catch (NumberFormatException e){
             e.printStackTrace();
         }
@@ -114,12 +114,6 @@ public class NetMoviePageKeyedDataSource extends PageKeyedDataSource<String, Mov
                 callback.onResult(new ArrayList<>(), Integer.toString(page.get()));
             }
         });
-
-
-
-
-
-
     }
 
 
