@@ -13,7 +13,7 @@ public interface MovieAPIInterface {
 
 
 
-    @GET("")
+    @GET(".")
     Call<ArrayList<Movie>> getMovies(@Query(Constants.API_KEY_LABEL) String apiKey,
                                      @Query(Constants.PAGE_PARAMETER) int page);
 

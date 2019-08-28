@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public final class Constants {
 
     // Network Stuff ...
+    public static final String API_BASE_URL="http://api.themoviedb.org/";
     public static final String MOVIES_ARRAY_DATA_TAG = "results";
     public static final String BASE_POPULAR_MOVIE_URL = "http://api.themoviedb.org/3/movie/popular" ;
     public static final String BASE_TOP_RATED_MOVIE_URL = "http://api.themoviedb.org/3/movie/top_rated" ;

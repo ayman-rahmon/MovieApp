@@ -42,7 +42,6 @@ public class MovieListFragment extends Fragment implements OnMovieItemClicked {
 
     private void observersRegisters() {
         final MovieAdapter adapter = new MovieAdapter(this);
-
         viewmodel.getMovies().observe(this , adapter ::submitList);
 
         viewmodel.getNetworkState().observe(this,networkState ->{
@@ -50,7 +49,6 @@ public class MovieListFragment extends Fragment implements OnMovieItemClicked {
         });
         recyclerView.setAdapter(adapter);
         movieDetailsViewModel = ViewModelProviders.of(getActivity()).get(MovieDetailsViewModel.class);
-
     }
 
 
@@ -65,9 +63,6 @@ public class MovieListFragment extends Fragment implements OnMovieItemClicked {
             transaction.replace(R.id.fragmentsContainer , detailsFragment );
             transaction.addToBackStack(null);
             transaction.commit() ;
-
-
         }
-
     }
 }

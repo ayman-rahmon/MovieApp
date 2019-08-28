@@ -1,22 +1,25 @@
 package com.example.movieapp2.repository.storage.model;
 
-import android.arch.lifecycle.ViewModel;
+
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.os.Parcel;
-import android.os.Parcelable;
-import com.google.gson.annotations.SerializedName;
-
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.support.annotation.NonNull;
 import android.support.v7.util.DiffUtil;
 
+import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "Movies")
-public class Movie extends BaseObservable  {
+
+
+/**
+ * Immutable model class for a Movie and entity in the Room database.
+ */
+
+
+@Entity(tableName = "movies")
+public class Movie extends BaseObservable {
 
     @PrimaryKey()
     @ColumnInfo(name = "id") @SerializedName(value="id") private Integer mId;
@@ -34,134 +37,121 @@ public class Movie extends BaseObservable  {
     @ColumnInfo(name = "release_date") @SerializedName(value="release_date") private String mReleaseDate;
 
 
-    //use for ordering the items in the view ...
+    // use for ordering the items in view
     public static DiffUtil.ItemCallback<Movie> DIFF_CALLBACK = new DiffUtil.ItemCallback<Movie>() {
         @Override
         public boolean areItemsTheSame(@NonNull Movie oldItem, @NonNull Movie newItem) {
-            return oldItem.equals(newItem.getmId());
+            return oldItem.getId().equals(newItem.getId());
         }
 
         @Override
         public boolean areContentsTheSame(@NonNull Movie oldItem, @NonNull Movie newItem) {
-            return oldItem.getmId().equals(newItem.getmId());
+            return oldItem.getId().equals(newItem.getId());
         }
     };
-
     @Bindable
-    public Integer getmId() {
+    public Integer getId() {
         return mId;
     }
 
-    public void setmId(Integer mId) {
+    public void setId(Integer mId) {
         this.mId = mId;
     }
-
     @Bindable
-    public Integer getmVoteCount() {
+    public Integer getVoteCount() {
         return mVoteCount;
     }
 
-    public void setmVoteCount(Integer mVoteCount) {
+    public void setVoteCount(Integer mVoteCount) {
         this.mVoteCount = mVoteCount;
     }
-
     @Bindable
-    public Boolean getmVideo() {
+    public Boolean getVideo() {
         return mVideo;
     }
-
-    public void setmVideo(Boolean mVideo) {
+    public void setVideo(Boolean mVideo) {
         this.mVideo = mVideo;
     }
-
     @Bindable
-    public Float getmVoteAverage() {
+    public Float getVoteAverage() {
         return mVoteAverage;
     }
 
-    public void setmVoteAverage(Float mVoteAverage) {
+    public void setVoteAverage(Float mVoteAverage) {
         this.mVoteAverage = mVoteAverage;
     }
-
     @Bindable
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public void setmTitle(String mTitle) {
+    public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
-
     @Bindable
-    public Float getmPopularity() {
+    public Float getPopularity() {
         return mPopularity;
     }
 
-    public void setmPopularity(Float mPopularity) {
+    public void setPopularity(Float mPopularity) {
         this.mPopularity = mPopularity;
     }
-
-
     @Bindable
-    public String getmPosterPath() {
+    public String getPosterPath() {
         return mPosterPath;
     }
 
-    public void setmPosterPath(String mPosterPath) {
+    public void setPosterPath(String mPosterPath) {
         this.mPosterPath = mPosterPath;
     }
 
     @Bindable
-    public String getmOriginalLanguage() {
+    public String getOriginalLanguage() {
         return mOriginalLanguage;
     }
 
-    public void setmOriginalLanguage(String mOriginalLanguage) {
+    public void setOriginalLanguage(String mOriginalLanguage) {
         this.mOriginalLanguage = mOriginalLanguage;
     }
 
+
+    public void setOriginalTitle(String mOriginalTitle) {
+        this.mOriginalTitle = mOriginalTitle;
+    }
     @Bindable
-    public String getmOriginalTitle() {
+    public String getOriginalTitle() {
         return mOriginalTitle;
     }
 
-    public void setmOriginalTitle(String mOriginalTitle) {
-        this.mOriginalTitle = mOriginalTitle;
+    public void setBackdropPath(String mBackdropPath) {
+        this.mBackdropPath = mBackdropPath;
     }
-
     @Bindable
-    public String getmBackdropPath() {
+    public String getBackdropPath() {
         return mBackdropPath;
     }
 
-    public void setmBackdropPath(String mBackdropPath) {
-        this.mBackdropPath = mBackdropPath;
+    public void setAdult(Boolean mAdult) {
+        this.mAdult = mAdult;
     }
-
     @Bindable
-    public Boolean getmAdult() {
+    public Boolean getAdult() {
         return mAdult;
     }
 
-    public void setmAdult(Boolean mAdult) {
-        this.mAdult = mAdult;
+    public void setOverview(String mOverview) {
+        this.mOverview = mOverview;
     }
-
     @Bindable
-    public String getmOverview() {
+    public String getOverview() {
         return mOverview;
     }
 
-    public void setmOverview(String mOverview) {
-        this.mOverview = mOverview;
-    }
-
-    @Bindable
-    public String getmReleaseDate() {
-        return mReleaseDate;
-    }
-
-    public void setmReleaseDate(String mReleaseDate) {
+    public void setReleaseDate(String mReleaseDate) {
         this.mReleaseDate = mReleaseDate;
+    }
+    @Bindable
+    public String getReleaseDate() {
+        return mReleaseDate;
     }
 }

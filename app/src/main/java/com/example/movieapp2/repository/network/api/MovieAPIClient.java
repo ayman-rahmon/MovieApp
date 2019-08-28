@@ -10,30 +10,30 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.example.movieapp2.Constants.BASE_POPULAR_MOVIE_URL;
+import static com.example.movieapp2.Constants.MOVIE_ARRAY_LIST_CLASS_TYPE;
+
 public class MovieAPIClient {
 
 
-    private static String requestedArrangement = Constants.BASE_POPULAR_MOVIE_URL ;
+    public static MovieAPIInterface getClient() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        // create OkHttpClient and register an interceptor
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-public static MovieAPIInterface getInstance() {
-    HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-    // create okhttpClient and register an interceptor ...
-    OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(interceptor).build();
+        Gson gson = new GsonBuilder()
+                // we remove from the response some wrapper tags from our movies array
+                .registerTypeAdapter(MOVIE_ARRAY_LIST_CLASS_TYPE, new MoviesJsonDeserializer())
+                .create();
 
-    Gson gson = new GsonBuilder().registerTypeAdapter(Constants.MOVIE_ARRAY_LIST_CLASS_TYPE, new MoviesJsonDeserializer()).create();
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(client)
+                .baseUrl(BASE_POPULAR_MOVIE_URL);
 
-
-    Retrofit.Builder builder = new Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson)).client(client).baseUrl(requestedArrangement);
-
-return builder.build().create(MovieAPIInterface.class);
-}
-
-
-public void setRequestedArrangement(String arrangement) {
-this.requestedArrangement  = arrangement ;
-}
-
+        return builder.build().create(MovieAPIInterface.class);
+    }
 
 
 }

@@ -23,7 +23,7 @@ import java.util.concurrent.Executors;
 import static com.example.movieapp2.Constants.NUMBERS_OF_THREADS;
 
 
-@Database(entities = {Movie.class},version =1)
+@Database(entities = {Movie.class},version =1 , exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
 private static AppDatabase instance ;

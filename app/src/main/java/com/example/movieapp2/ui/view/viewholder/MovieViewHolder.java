@@ -37,10 +37,10 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     public void bindTo(Movie movie) {
         this.movie = movie  ;
-        title.setText(movie.getmOriginalTitle());
+        title.setText(movie.getOriginalTitle());
 
-        if(movie.getmPosterPath()!= null)
-        Picasso.get().load(Constants.movieImage + movie.getmPosterPath()).into(posterimg);
+        if(movie.getPosterPath()!= null)
+        Picasso.get().load(Constants.movieImage + movie.getPosterPath()).into(posterimg);
 
     }
 

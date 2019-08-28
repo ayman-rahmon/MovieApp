@@ -29,7 +29,7 @@ public class NetMoviePageKeyedDataSource extends PageKeyedDataSource<String, Mov
 
 
     NetMoviePageKeyedDataSource(){
-        movieService  = MovieAPIClient.getInstance() ;
+        movieService  = MovieAPIClient.getClient() ;
         networkState = new MutableLiveData() ;
         movieObservable = ReplaySubject.create() ;
     }

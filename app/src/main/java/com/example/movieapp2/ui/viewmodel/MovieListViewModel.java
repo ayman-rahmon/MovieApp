@@ -12,16 +12,21 @@ import com.example.movieapp2.repository.storage.model.NetworkState;
 
 public class MovieListViewModel extends AndroidViewModel {
 
-    private MovieRepository repository ;
+    private MovieRepository repository;
 
     public MovieListViewModel(@NonNull Application application) {
         super(application);
         repository = MovieRepository.getInstance(application);
+
     }
 
-    public LiveData<PagedList<Movie>> getMovies() {return repository.getMovies() ;}
 
-    public LiveData<NetworkState> getNetworkState() {return repository.getNetworkState(); }
+    public LiveData<PagedList<Movie>> getMovies() {
+        return repository.getMovies();
+    }
 
+    public LiveData<NetworkState> getNetworkState() {
+        return repository.getNetworkState();
+    }
 
 }
