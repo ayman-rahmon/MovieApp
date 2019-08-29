@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieApp2</string>
+    <string name="app_name">MovieApp</string>
 
     <string name="avarage_rate">Avarage Rate :</string>
     <string name="popular_movies">popular movies</string>
@@ -8,5 +8,17 @@
     <string name="api_key">02125890263c5f322accfbe297beef06</string>
     <string name="my_favorites">my favorites</string>
 
+    <string name="main_Activity_title">Movies</string>
+
+
+
+
+    <!-- tabs stuff ... -->
+    <string name="movies_tab">Movies</string>
+    <string name="favorites_tab">favorites</string>
+    <string name="movie_list_fragment_ttitle">movies</string>
+    <string name="favorite_fragment">favorites</string>
+    <string name="navigation_drawer_open">drawer-open</string>
+    <string name="navigation_drawer_close">drawer-close</string>
 
 </resources>

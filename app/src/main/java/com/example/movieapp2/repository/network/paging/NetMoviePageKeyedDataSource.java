@@ -106,7 +106,6 @@ public class NetMoviePageKeyedDataSource extends PageKeyedDataSource<String, Mov
                 String errorMessage ;
                 if(t.getMessage() == null) {
                    errorMessage = "unknown error";
-
                 }else{
                     errorMessage = t.getMessage() ;
                 }
@@ -115,8 +114,6 @@ public class NetMoviePageKeyedDataSource extends PageKeyedDataSource<String, Mov
             }
         });
     }
-
-
 
     @Override
     public void loadBefore(@NonNull LoadParams<String> params, @NonNull LoadCallback<String, Movie> callback) {

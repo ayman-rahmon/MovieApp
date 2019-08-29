@@ -1,158 +1,139 @@
 package com.example.movieapp2.ui.view;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.movieapp2.R;
-import com.example.movieapp2.repository.storage.model.Movie;
-import com.example.movieapp2.ui.adapters.MovieAdapter ;
-import com.example.movieapp2.utils.JSONUtils;
-import com.example.movieapp2.utils.NetworkUtils;
+import com.example.movieapp2.ui.view.fragments.FavoritesFragment;
+import com.example.movieapp2.ui.view.fragments.MovieListFragment;
+import com.example.movieapp2.ui.view.fragments.adapters.TabAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
 
 
     private static final String TAG = MainActivity.class.getSimpleName() ;
+    private DrawerLayout drawerLayout ;
+    private Toolbar toolbar ;
+    private TabLayout tabLayout ;
+    private TabAdapter tabAdapter ;
+    private ViewPager viewPager ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        setUpToolbar();
+        setUpTabsLayout() ;
+        setUpDrawer();
+        // setting up the movie list fragment ....
+/*
         if(findViewById(R.id.fragmentsContainer)!= null) {
             if(savedInstanceState != null ){
                 return  ;
             }
-            MovieListFragment  listFragment = new MovieListFragment() ;
+            MovieListFragment listFragment = new MovieListFragment() ;
             listFragment.setArguments(getIntent().getExtras());
             getSupportFragmentManager().beginTransaction().add(R.id.fragmentsContainer,listFragment).commit();
         }
-
-
-
-/*
-        adapter = new MovieAdapter(this );
-
-        listView.setLayoutManager(new GridLayoutManager(this,3));
-        listView.setAdapter(adapter);
-
-
-
-        new DownloadMovies().execute();
 */
-
-    }
-
-/*
-    @Override
-    public void onMovieClicked(Movie clickedItem) {
-    // movie clicked ...
-        // start details activity...
-        Intent startDetails = new Intent(MainActivity.this, MovieDetails.class);
-        startDetails.putExtra(Constants.INTENT_MOVIE_ID , clickedItem.getId());
-        Log.d("IDADAPTER",": " + clickedItem.getId());
-        startDetails.putExtra(Constants.INTENT_ORIGINAL_FILM_NAME,clickedItem.getOriginalTitle());
-        startDetails.putExtra(Constants.INTENT_MOVIE_POSTER , clickedItem.getPoster_path());
-        startDetails.putExtra(Constants.INTENT_OVERVIEW , clickedItem.getOverview());
-        startDetails.putExtra(Constants.INTENT_VOTE_AVARAGE ,clickedItem.getVoteAvarage());
-        startDetails.putExtra(Constants.INTENT_MOVIE_BACKGROUND , clickedItem.getBackdropPath());
-        startDetails.putExtra(Constants.INTENT_RELEASE_DATE,clickedItem.getReleaseDate());
-        startActivity(startDetails);
-    }
-*/
-
-
-/*
-    static class DownloadMovies extends AsyncTask<Void,Void,ArrayList<Movie>> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-//            movies.clear();
-            listView.setVisibility(View.GONE);
-            progressBar.setVisibility(View.VISIBLE);
-        }
-
-
-        @Override
-        protected ArrayList<Movie>  doInBackground(Void... voids) {
-
-            URL popularMoviesApp = NetworkUtils.getMoviesURL();
-            ArrayList<Movie> movies = null;
-
-            try {
-                HttpURLConnection conn = (HttpURLConnection)popularMoviesApp.openConnection() ;
-                conn.setRequestMethod("GET");
-//                conn.setRequestProperty();
-
-                BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                int status = conn.getResponseCode();
-
-                if(status == HttpURLConnection.HTTP_OK) {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                    String inputLine;
-                    StringBuffer result = new StringBuffer();
-                    while ((inputLine = in.readLine()) != null) {
-                        result.append(inputLine);
-                    }
-                    in.close();
-                    Log.d("response :: ",  result.toString() );
-
-
-                    // parse and store data locally...
-
-                    JSONObject root = new JSONObject(result.toString());
-
-                    JSONArray jsonArray = root.getJSONArray("results");
-                     movies  = new ArrayList<>();
-                    for(int i = 0  ; i<= jsonArray.length() ; i ++ ){
-
-                        JSONObject jmovie = jsonArray.getJSONObject(i) ;
-                        JSONUtils utils = new JSONUtils();
-                        Movie movie = utils.parsingJSON(jmovie);
-//                        Log.d("Movie:"," "+movie.toString());
-                        movies.add(movie);
-                    }
-                }else {
-                    Log.d("response :: ","error in the response !! OR no response ...");
-                }
-
-            } catch (IOException e) {
-                Log.e(TAG ,"error downloading the data: " + e.getMessage());
-                e.printStackTrace();
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return movies ;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Movie> movies) {
-            super.onPostExecute(movies);
-            adapter.setData(movies);
-            progressBar.setVisibility(View.GONE);
-            listView.setVisibility(View.VISIBLE);
-        }
-
-    }
-*/
-
 }
+
+    private void setUpDrawer() {
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open , R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+    }
+
+
+    private void setUpToolbar() {
+    toolbar = (Toolbar)findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+    setTitle(getString(R.string.app_name));
+    toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
+    }
+
+
+    private void setUpTabsLayout() {
+        viewPager = (ViewPager) findViewById(R.id.pager);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabAdapter =  new TabAdapter(getSupportFragmentManager());
+        tabAdapter.addFragment(new MovieListFragment(),getString(R.string.movie_list_fragment_ttitle));
+        tabAdapter.addFragment(new FavoritesFragment() , getString(R.string.favorite_fragment));
+        viewPager.setAdapter(tabAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater() ;
+        inflater.inflate(R.menu.main_menu,menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch(item.getItemId()) {
+            case R.id.popular_movies :
+                // change the url to popular movies
+                Log.d(TAG , "popular movies clicked ");
+                return true ;
+            case R.id.most_rated :
+                // change the url to most rated ...
+                Log.d(TAG , "most rated clicked ");
+                return true ;
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+
+
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        int id = menuItem.getItemId() ;
+
+        switch(id) {
+            case R.id.nav_camera :
+                Toast.makeText(this,"home drawer item selected ...",Toast.LENGTH_SHORT).show();
+            break ;
+
+            default :
+                Toast.makeText(this,"selected something else  ...",Toast.LENGTH_SHORT).show();
+            break  ;
+        }
+
+        // close down the drawer layout ...
+        drawerLayout.closeDrawer(Gravity.START);
+
+        return true;
+    }
+}
+

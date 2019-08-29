@@ -1,6 +1,5 @@
-package com.example.movieapp2.ui.view;
+package com.example.movieapp2.ui.view.fragments;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;

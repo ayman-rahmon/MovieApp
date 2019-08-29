@@ -1,4 +1,4 @@
-package com.example.movieapp2.ui.view;
+package com.example.movieapp2.ui.view.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

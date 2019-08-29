@@ -1,4 +1,4 @@
-package com.example.movieapp2.ui.view;
+package com.example.movieapp2.ui.view.fragments;
 
 import android.app.FragmentBreadCrumbs;
 import android.arch.lifecycle.ViewModelProviders;

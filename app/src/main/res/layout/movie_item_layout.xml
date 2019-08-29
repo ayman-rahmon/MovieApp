@@ -7,7 +7,9 @@
     android:layout_height="190dp"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
-    cardview:cardCornerRadius="4dp">
+    cardview:cardCornerRadius="4dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,11 +25,12 @@
 
         <TextView
             android:id="@+id/movie_title_id"
-            android:textColor="#2d2d2d"
+            android:textColor="@android:color/white"
             android:textSize="13sp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:drawable="@android:color/tertiary_text_light"
             android:text="Book Title"/>
 
     </LinearLayout>
