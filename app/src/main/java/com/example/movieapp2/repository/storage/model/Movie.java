@@ -35,7 +35,7 @@ public class Movie extends BaseObservable {
     @ColumnInfo(name = "adult") @SerializedName(value="adult") private Boolean mAdult;
     @ColumnInfo(name = "overview") @SerializedName(value="overview") private String mOverview;
     @ColumnInfo(name = "release_date") @SerializedName(value="release_date") private String mReleaseDate;
-
+    @ColumnInfo(name = "is_favorite")   private boolean isFavorite = false ;
 
     // use for ordering the items in view
     public static DiffUtil.ItemCallback<Movie> DIFF_CALLBACK = new DiffUtil.ItemCallback<Movie>() {
@@ -153,5 +153,14 @@ public class Movie extends BaseObservable {
     @Bindable
     public String getReleaseDate() {
         return mReleaseDate;
+    }
+
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
     }
 }
