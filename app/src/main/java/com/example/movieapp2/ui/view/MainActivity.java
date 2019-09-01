@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.example.movieapp2.R;
 import com.example.movieapp2.ui.view.fragments.FavoritesFragment;
 import com.example.movieapp2.ui.view.fragments.MovieListFragment;
-import com.example.movieapp2.ui.view.fragments.adapters.TabAdapter;
+import com.example.movieapp2.ui.adapters.TabAdapter;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 

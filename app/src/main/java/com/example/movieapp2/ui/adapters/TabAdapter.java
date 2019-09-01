@@ -1,4 +1,4 @@
-package com.example.movieapp2.ui.view.fragments.adapters;
+package com.example.movieapp2.ui.adapters;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
