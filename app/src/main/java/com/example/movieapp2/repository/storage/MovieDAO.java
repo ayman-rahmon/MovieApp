@@ -39,7 +39,7 @@ public interface MovieDAO {
    abstract void deleteAllMovies()  ;
 
 
-    @Query("select * from movies where is_favorite = true")
+    @Query("select * from movies where is_favorite = 'true'")
    LiveData<List<Movie>> loadFavorites() ;
 
 

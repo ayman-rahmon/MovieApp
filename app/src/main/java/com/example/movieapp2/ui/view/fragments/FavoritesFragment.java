@@ -45,12 +45,6 @@ public class FavoritesFragment extends Fragment implements FavoriteMoviesAdapter
 
         setUpViewModel();
 
-
-
-
-
-
-
         return view;
     }
 
