@@ -5,7 +5,7 @@ import android.arch.paging.PageKeyedDataSource;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.repository.network.api.MovieAPIClient;
 import com.example.movieapp2.repository.network.api.MovieAPIInterface;
 import com.example.movieapp2.repository.storage.model.Movie;

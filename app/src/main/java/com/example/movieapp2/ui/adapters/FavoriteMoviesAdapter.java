@@ -9,14 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.R;
 import com.example.movieapp2.repository.storage.model.Movie;
-import com.example.movieapp2.repository.storage.model.NetworkState;
-import com.example.movieapp2.ui.listeners.OnMovieItemClicked;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteMoviesAdapter extends RecyclerView.Adapter<FavoriteMoviesAdapter.FavViewHolder> {

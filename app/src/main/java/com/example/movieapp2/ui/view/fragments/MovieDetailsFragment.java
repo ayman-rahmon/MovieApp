@@ -1,6 +1,5 @@
 package com.example.movieapp2.ui.view.fragments;
 
-import android.app.FragmentBreadCrumbs;
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.R;
 import com.example.movieapp2.ui.viewmodel.MovieDetailsViewModel;
 import com.example.movieapp2.databinding.MovieDetailsFragmentBinding;

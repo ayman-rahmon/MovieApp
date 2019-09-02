@@ -2,29 +2,18 @@ package com.example.movieapp2.ui.adapters;
 
 
 import android.arch.paging.PagedListAdapter;
-import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.recyclerview.extensions.AsyncDifferConfig;
-import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.movieapp2.Constants;
 import com.example.movieapp2.R;
 import com.example.movieapp2.repository.storage.model.Movie;
 import com.example.movieapp2.repository.storage.model.NetworkState;
 import com.example.movieapp2.ui.view.viewholder.MovieViewHolder;
 import com.example.movieapp2.ui.view.viewholder.NetworkStateItemViewHolder;
 import com.example.movieapp2.ui.listeners.OnMovieItemClicked ;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 public class MovieAdapter extends PagedListAdapter<Movie, RecyclerView.ViewHolder> {
 

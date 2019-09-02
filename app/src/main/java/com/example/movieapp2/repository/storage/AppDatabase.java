@@ -3,24 +3,19 @@ package com.example.movieapp2.repository.storage;
 import android.arch.lifecycle.LiveData;
 import android.arch.paging.LivePagedListBuilder;
 import android.arch.paging.PagedList;
-import android.arch.persistence.db.SupportSQLiteOpenHelper;
 import android.arch.persistence.room.Database;
-import android.arch.persistence.room.DatabaseConfiguration;
-import android.arch.persistence.room.InvalidationTracker;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.repository.storage.model.Movie;
-import com.example.movieapp2.repository.storage.paging.DBMoviePageKeyedDataSource;
 import com.example.movieapp2.repository.storage.paging.DBMoviesPageKeyedDataFactory;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-import static com.example.movieapp2.Constants.NUMBERS_OF_THREADS;
+import static com.example.movieapp2.utils.Constants.NUMBERS_OF_THREADS;
 
 
 @Database(entities = {Movie.class},version =1 , exportSchema = false)

@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.R;
 import com.example.movieapp2.repository.storage.model.Movie;
 import com.example.movieapp2.repository.storage.model.NetworkState;

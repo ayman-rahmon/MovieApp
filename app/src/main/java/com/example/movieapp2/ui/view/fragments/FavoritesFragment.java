@@ -36,15 +36,19 @@ public class FavoritesFragment extends Fragment implements FavoriteMoviesAdapter
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.movie_list_fragment , container , false );
-        recyclerView = container.findViewById(R.id.moviesRecyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity() , 3 ));
-        adapter = new FavoriteMoviesAdapter(getActivity(),this);
-        recyclerView.setAdapter(adapter);
+        View view = inflater.inflate(R.layout.favorite_movies_fragment , container , false );
+        recyclerView = view.findViewById(R.id.favmoviesRecyclerView);
+
+       if(view.findViewById(R.id.favmoviesRecyclerView) != null) {
+           recyclerView.setLayoutManager(new GridLayoutManager(getActivity() , 3 ));
+           adapter = new FavoriteMoviesAdapter(getActivity(),this);
+           recyclerView.setAdapter(adapter);
+       } else {
+           Log.e(TAG , "cannot detect recycler view == null ... ");
+       }
         database = AppDatabase.getInstance(getActivity().getApplicationContext());
 
         setUpViewModel();
-
         return view;
     }
 

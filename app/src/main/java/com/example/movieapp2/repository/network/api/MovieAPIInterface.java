@@ -1,6 +1,6 @@
 package com.example.movieapp2.repository.network.api;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.repository.storage.model.Movie;
 
 import java.util.ArrayList;

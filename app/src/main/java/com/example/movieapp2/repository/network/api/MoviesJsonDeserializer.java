@@ -2,7 +2,7 @@ package com.example.movieapp2.repository.network.api;
 
 import android.util.Log;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.repository.storage.model.Movie;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;

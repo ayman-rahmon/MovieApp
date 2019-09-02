@@ -1,4 +1,4 @@
-package com.example.movieapp2;
+package com.example.movieapp2.utils;
 
 import com.example.movieapp2.repository.storage.model.Movie;
 

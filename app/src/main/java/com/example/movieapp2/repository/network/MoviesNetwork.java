@@ -6,7 +6,7 @@ import android.arch.lifecycle.Transformations;
 import android.arch.paging.LivePagedListBuilder;
 import android.arch.paging.PagedList;
 
-import com.example.movieapp2.Constants;
+import com.example.movieapp2.utils.Constants;
 import com.example.movieapp2.repository.network.paging.NetMovieDataSourceFactory;
 import com.example.movieapp2.repository.network.paging.NetMoviePageKeyedDataSource;
 import com.example.movieapp2.repository.storage.model.Movie;
