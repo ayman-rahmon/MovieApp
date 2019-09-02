@@ -47,8 +47,10 @@ public class FavoritesFragment extends Fragment implements FavoriteMoviesAdapter
            Log.e(TAG , "cannot detect recycler view == null ... ");
        }
         database = AppDatabase.getInstance(getActivity().getApplicationContext());
-
         setUpViewModel();
+
+        movieDetailsViewModel = ViewModelProviders.of(getActivity()).get(MovieDetailsViewModel.class);
+
         return view;
     }
 
