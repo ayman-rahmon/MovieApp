@@ -16,7 +16,7 @@ i still have to add some functionalitiy to this project so i'll write more detai
    * RecyclerView.
    * Parcelable.
    
-<b>install :</b> 
+<b>installation :</b> 
   <br>
 to install and run you just need to clone the repository and run it using Android Studio.
 
