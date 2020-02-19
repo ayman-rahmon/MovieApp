@@ -1,8 +1,9 @@
 # MovieApp
-i still have to add some functionalitiy to this project so i'll write more details when i'm done with it :) ... srry about that ...
-
-(this project was created to practice on  the MVVM pattern design)
-
+i still have to add some functionalitiy to this project so i'll write more details when i'm done with it :) ... <br>
+<b>(this project was created to practice on  the MVVM design pattern)</b>
+<br>
+<br>
+<br>
 <b>tools and components used :</b> 
    * Paging library.
    * ViewModel.
