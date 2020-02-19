@@ -30,9 +30,11 @@ and then you can change the api key from the strings file , it's under the name 
 
 
 
-<b>License : </br>
+<b>License : </b>
+<br>
 
-this project was published under the MIT license .<br><br>
+this project was published under the MIT license .<br>
+
 
 Libraries, dependencies, and tools used in this project are tied with their own licenses respectively. 
 
