@@ -70,7 +70,7 @@ public class MovieDetailsFragment extends Fragment {
             }
         });
 
-
+        // (TODO) 2-- Adding tutorials bar ...
 
         return view;
     }

@@ -31,7 +31,6 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
         this.title = itemView.findViewById(R.id.movie_title_id);
         this.posterimg = itemView.findViewById(R.id.movie_img_id );
         itemView.setOnClickListener(this);
-
     }
 
 

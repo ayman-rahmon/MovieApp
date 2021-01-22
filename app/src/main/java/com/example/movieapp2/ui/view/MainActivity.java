@@ -53,6 +53,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().add(R.id.fragmentsContainer,listFragment).commit();
         }
 */
+
+        // (TODO) -- 1 adding support for bigger devices ... (tablets)
+        // seperate  devices based on screen resolution.
+
+
+
+
+
+
+
+
+
+
 }
 
     private void setUpDrawer() {
@@ -93,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-
+    // (TODO) 3 -- finish up updating urls...
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -114,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
-
+    // (TODO) 4 -- finish up the drawer and adding a preference Activity...
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
